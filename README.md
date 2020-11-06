@@ -56,19 +56,24 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$apiInstance = new Swagger\Client\Api\AccountalertApi(
+$apiInstance = new Swagger\Client\Api\AccounteventApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
 $x_account_api_key = "x_account_api_key_example"; // string | Account API Key
 $search = "search_example"; // string | search term
+$type = "type_example"; // string | search type
+$from = "from_example"; // string | from date
+$to = "to_example"; // string | to date
+$source = "source_example"; // string | data source from which to get timestamp keys subaccount or ip
+$source_id = "source_id_example"; // string | source id from which to get timestamp keys subaccount or ip
 
 try {
-    $result = $apiInstance->alertRouterCount($x_account_api_key, $search);
+    $result = $apiInstance->eventRouterCountAllEventsFromAAccountForAGivenTimeRange($x_account_api_key, $search, $type, $from, $to, $source, $source_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AccountalertApi->alertRouterCount: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AccounteventApi->eventRouterCountAllEventsFromAAccountForAGivenTimeRange: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -80,10 +85,6 @@ All URIs are relative to *https://api.sendpost.io/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountalertApi* | [**alertRouterCount**](docs/Api/AccountalertApi.md#alertroutercount) | **GET** /account/alert/count | 
-*AccountalertApi* | [**alertRouterCreateAlert**](docs/Api/AccountalertApi.md#alertroutercreatealert) | **POST** /account/alert/ | 
-*AccountalertApi* | [**alertRouterGetAll**](docs/Api/AccountalertApi.md#alertroutergetall) | **GET** /account/alert/ | 
-*AccountalertApi* | [**alertRouterUpdate**](docs/Api/AccountalertApi.md#alertrouterupdate) | **PUT** /account/alert/{alertid} | 
 *AccounteventApi* | [**eventRouterCountAllEventsFromAAccountForAGivenTimeRange**](docs/Api/AccounteventApi.md#eventroutercountalleventsfromaaccountforagiventimerange) | **GET** /account/event/count | 
 *AccounteventApi* | [**eventRouterCountAllEventsFromANodeOfASubAccountForAGivenTimeRange**](docs/Api/AccounteventApi.md#eventroutercountalleventsfromanodeofasubaccountforagiventimerange) | **GET** /account/event/node/count | 
 *AccounteventApi* | [**eventRouterGet**](docs/Api/AccounteventApi.md#eventrouterget) | **GET** /account/event/{eventId} | 
@@ -148,11 +149,11 @@ Class | Method | HTTP request | Description
 *AccountsubaccountApi* | [**subAccountRouterGet**](docs/Api/AccountsubaccountApi.md#subaccountrouterget) | **GET** /account/subaccount/{subAccountId} | 
 *AccountsubaccountApi* | [**subAccountRouterGetAll**](docs/Api/AccountsubaccountApi.md#subaccountroutergetall) | **GET** /account/subaccount/ | 
 *AccountsubaccountApi* | [**subAccountRouterUpdate**](docs/Api/AccountsubaccountApi.md#subaccountrouterupdate) | **PUT** /account/subaccount/{subAccountId} | 
-*AccountvalidateApi* | [**validateRouterValidateEmailBulk**](docs/Api/AccountvalidateApi.md#validateroutervalidateemailbulk) | **POST** /account/validate/bulk | 
-*AccountvalidateApi* | [**validateRouterValidateEmailList**](docs/Api/AccountvalidateApi.md#validateroutervalidateemaillist) | **POST** /account/validate/ | 
+*AccountvalidationApi* | [**validateRouterValidateEmailBulk**](docs/Api/AccountvalidationApi.md#validateroutervalidateemailbulk) | **POST** /account/validation/bulk | 
 *AccountvalidationApi* | [**validationRouterCount**](docs/Api/AccountvalidationApi.md#validationroutercount) | **GET** /account/validation/count | 
 *AccountvalidationApi* | [**validationRouterDeleteValidation**](docs/Api/AccountvalidationApi.md#validationrouterdeletevalidation) | **DELETE** /account/validation/ | 
 *AccountvalidationApi* | [**validationRouterGetAll**](docs/Api/AccountvalidationApi.md#validationroutergetall) | **GET** /account/validation/ | 
+*AccountvalidationApi* | [**validationRouterValidateEmailList**](docs/Api/AccountvalidationApi.md#validationroutervalidateemaillist) | **POST** /account/validation/ | 
 *AccountwebhookApi* | [**accountWebhookRouterCount**](docs/Api/AccountwebhookApi.md#accountwebhookroutercount) | **GET** /account/webhook/count | 
 *AccountwebhookApi* | [**accountWebhookRouterCreate**](docs/Api/AccountwebhookApi.md#accountwebhookroutercreate) | **POST** /account/webhook/ | 
 *AccountwebhookApi* | [**accountWebhookRouterCreateAccountWebhookInAccountWebhookCache**](docs/Api/AccountwebhookApi.md#accountwebhookroutercreateaccountwebhookinaccountwebhookcache) | **POST** /account/webhook/cache | 
@@ -206,9 +207,9 @@ Class | Method | HTTP request | Description
  - [ModelsAccount](docs/Model/ModelsAccount.md)
  - [ModelsAccountIPPool](docs/Model/ModelsAccountIPPool.md)
  - [ModelsAccountWebhook](docs/Model/ModelsAccountWebhook.md)
- - [ModelsAlert](docs/Model/ModelsAlert.md)
  - [ModelsAlertLabel](docs/Model/ModelsAlertLabel.md)
  - [ModelsAlertRequest](docs/Model/ModelsAlertRequest.md)
+ - [ModelsAlertResponse](docs/Model/ModelsAlertResponse.md)
  - [ModelsAuthInfo](docs/Model/ModelsAuthInfo.md)
  - [ModelsBackOffConfiguration](docs/Model/ModelsBackOffConfiguration.md)
  - [ModelsBackOffDecreaseType](docs/Model/ModelsBackOffDecreaseType.md)
@@ -223,6 +224,7 @@ Class | Method | HTTP request | Description
  - [ModelsDetailedAlert](docs/Model/ModelsDetailedAlert.md)
  - [ModelsDomain](docs/Model/ModelsDomain.md)
  - [ModelsEAccount](docs/Model/ModelsEAccount.md)
+ - [ModelsEAccountMember](docs/Model/ModelsEAccountMember.md)
  - [ModelsEDomain](docs/Model/ModelsEDomain.md)
  - [ModelsEIP](docs/Model/ModelsEIP.md)
  - [ModelsEIPPool](docs/Model/ModelsEIPPool.md)
@@ -259,7 +261,6 @@ Class | Method | HTTP request | Description
  - [ModelsMemberRole](docs/Model/ModelsMemberRole.md)
  - [ModelsNotificationType](docs/Model/ModelsNotificationType.md)
  - [ModelsPIPStat](docs/Model/ModelsPIPStat.md)
- - [ModelsPriority](docs/Model/ModelsPriority.md)
  - [ModelsQEmailMessage](docs/Model/ModelsQEmailMessage.md)
  - [ModelsQEvent](docs/Model/ModelsQEvent.md)
  - [ModelsRDSuppression](docs/Model/ModelsRDSuppression.md)
