@@ -66,6 +66,7 @@ class ModelsEmailMessage implements ModelInterface, ArrayAccess
         'pre_text' => 'string',
         'reply_to' => '\Swagger\Client\Model\ModelsReplyTo',
         'subject' => 'string',
+        'template' => 'string',
         'text_body' => 'string',
         'to' => '\Swagger\Client\Model\ModelsTo[]',
         'track_clicks' => 'bool',
@@ -87,6 +88,7 @@ class ModelsEmailMessage implements ModelInterface, ArrayAccess
         'pre_text' => null,
         'reply_to' => null,
         'subject' => null,
+        'template' => null,
         'text_body' => null,
         'to' => null,
         'track_clicks' => null,
@@ -129,6 +131,7 @@ class ModelsEmailMessage implements ModelInterface, ArrayAccess
         'pre_text' => 'preText',
         'reply_to' => 'replyTo',
         'subject' => 'subject',
+        'template' => 'template',
         'text_body' => 'textBody',
         'to' => 'to',
         'track_clicks' => 'trackClicks',
@@ -150,6 +153,7 @@ class ModelsEmailMessage implements ModelInterface, ArrayAccess
         'pre_text' => 'setPreText',
         'reply_to' => 'setReplyTo',
         'subject' => 'setSubject',
+        'template' => 'setTemplate',
         'text_body' => 'setTextBody',
         'to' => 'setTo',
         'track_clicks' => 'setTrackClicks',
@@ -171,6 +175,7 @@ class ModelsEmailMessage implements ModelInterface, ArrayAccess
         'pre_text' => 'getPreText',
         'reply_to' => 'getReplyTo',
         'subject' => 'getSubject',
+        'template' => 'getTemplate',
         'text_body' => 'getTextBody',
         'to' => 'getTo',
         'track_clicks' => 'getTrackClicks',
@@ -246,6 +251,7 @@ class ModelsEmailMessage implements ModelInterface, ArrayAccess
         $this->container['pre_text'] = isset($data['pre_text']) ? $data['pre_text'] : null;
         $this->container['reply_to'] = isset($data['reply_to']) ? $data['reply_to'] : null;
         $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
+        $this->container['template'] = isset($data['template']) ? $data['template'] : null;
         $this->container['text_body'] = isset($data['text_body']) ? $data['text_body'] : null;
         $this->container['to'] = isset($data['to']) ? $data['to'] : null;
         $this->container['track_clicks'] = isset($data['track_clicks']) ? $data['track_clicks'] : null;
@@ -488,6 +494,30 @@ class ModelsEmailMessage implements ModelInterface, ArrayAccess
     public function setSubject($subject)
     {
         $this->container['subject'] = $subject;
+
+        return $this;
+    }
+
+    /**
+     * Gets template
+     *
+     * @return string
+     */
+    public function getTemplate()
+    {
+        return $this->container['template'];
+    }
+
+    /**
+     * Sets template
+     *
+     * @param string $template template
+     *
+     * @return $this
+     */
+    public function setTemplate($template)
+    {
+        $this->container['template'] = $template;
 
         return $this;
     }

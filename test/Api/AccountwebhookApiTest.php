@@ -92,32 +92,12 @@ class AccountwebhookApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for accountWebhookRouterCreateAccountWebhookInAccountWebhookCache
-     *
-     * .
-     *
-     */
-    public function testAccountWebhookRouterCreateAccountWebhookInAccountWebhookCache()
-    {
-    }
-
-    /**
      * Test case for accountWebhookRouterDelete
      *
      * .
      *
      */
     public function testAccountWebhookRouterDelete()
-    {
-    }
-
-    /**
-     * Test case for accountWebhookRouterDeleteAccountWebhookInAccountWebhookCache
-     *
-     * .
-     *
-     */
-    public function testAccountWebhookRouterDeleteAccountWebhookInAccountWebhookCache()
     {
     }
 

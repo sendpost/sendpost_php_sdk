@@ -112,6 +112,27 @@ class ModelsAccountTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "is_canceled"
+     */
+    public function testPropertyIsCanceled()
+    {
+    }
+
+    /**
+     * Test attribute "is_last_payment_failed"
+     */
+    public function testPropertyIsLastPaymentFailed()
+    {
+    }
+
+    /**
+     * Test attribute "is_upgraded"
+     */
+    public function testPropertyIsUpgraded()
+    {
+    }
+
+    /**
      * Test attribute "lock_threshold"
      */
     public function testPropertyLockThreshold()
@@ -129,6 +150,13 @@ class ModelsAccountTest extends \PHPUnit_Framework_TestCase
      * Test attribute "name"
      */
     public function testPropertyName()
+    {
+    }
+
+    /**
+     * Test attribute "onboard_c_finished"
+     */
+    public function testPropertyOnboardCFinished()
     {
     }
 

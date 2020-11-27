@@ -145,4 +145,11 @@ class ModelsDomainTest extends \PHPUnit_Framework_TestCase
     public function testPropertyTrackVerified()
     {
     }
+
+    /**
+     * Test attribute "verified"
+     */
+    public function testPropertyVerified()
+    {
+    }
 }

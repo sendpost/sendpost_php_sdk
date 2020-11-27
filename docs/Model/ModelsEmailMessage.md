@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **pre_text** | **string** |  | [optional] 
 **reply_to** | [**\Swagger\Client\Model\ModelsReplyTo**](ModelsReplyTo.md) |  | [optional] 
 **subject** | **string** |  | [optional] 
+**template** | **string** |  | [optional] 
 **text_body** | **string** |  | [optional] 
 **to** | [**\Swagger\Client\Model\ModelsTo[]**](ModelsTo.md) |  | [optional] 
 **track_clicks** | **bool** |  | [optional] 

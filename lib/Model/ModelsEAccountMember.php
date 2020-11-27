@@ -60,7 +60,9 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
         'company_name' => 'string',
         'current_email_service_provider' => 'string',
         'industry' => 'string',
+        'logo_url' => 'string',
         'name' => 'string',
+        'onboard_c_finished' => 'bool',
         'onboard_q_answered' => 'bool',
         'phone_number' => 'string',
         'sending_volume_per_month' => 'string',
@@ -77,7 +79,9 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
         'company_name' => null,
         'current_email_service_provider' => null,
         'industry' => null,
+        'logo_url' => null,
         'name' => null,
+        'onboard_c_finished' => null,
         'onboard_q_answered' => null,
         'phone_number' => null,
         'sending_volume_per_month' => null,
@@ -115,7 +119,9 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
         'company_name' => 'companyName',
         'current_email_service_provider' => 'currentEmailServiceProvider',
         'industry' => 'industry',
+        'logo_url' => 'logoURL',
         'name' => 'name',
+        'onboard_c_finished' => 'onboardCFinished',
         'onboard_q_answered' => 'onboardQAnswered',
         'phone_number' => 'phoneNumber',
         'sending_volume_per_month' => 'sendingVolumePerMonth',
@@ -132,7 +138,9 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
         'company_name' => 'setCompanyName',
         'current_email_service_provider' => 'setCurrentEmailServiceProvider',
         'industry' => 'setIndustry',
+        'logo_url' => 'setLogoUrl',
         'name' => 'setName',
+        'onboard_c_finished' => 'setOnboardCFinished',
         'onboard_q_answered' => 'setOnboardQAnswered',
         'phone_number' => 'setPhoneNumber',
         'sending_volume_per_month' => 'setSendingVolumePerMonth',
@@ -149,7 +157,9 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
         'company_name' => 'getCompanyName',
         'current_email_service_provider' => 'getCurrentEmailServiceProvider',
         'industry' => 'getIndustry',
+        'logo_url' => 'getLogoUrl',
         'name' => 'getName',
+        'onboard_c_finished' => 'getOnboardCFinished',
         'onboard_q_answered' => 'getOnboardQAnswered',
         'phone_number' => 'getPhoneNumber',
         'sending_volume_per_month' => 'getSendingVolumePerMonth',
@@ -220,7 +230,9 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
         $this->container['company_name'] = isset($data['company_name']) ? $data['company_name'] : null;
         $this->container['current_email_service_provider'] = isset($data['current_email_service_provider']) ? $data['current_email_service_provider'] : null;
         $this->container['industry'] = isset($data['industry']) ? $data['industry'] : null;
+        $this->container['logo_url'] = isset($data['logo_url']) ? $data['logo_url'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['onboard_c_finished'] = isset($data['onboard_c_finished']) ? $data['onboard_c_finished'] : null;
         $this->container['onboard_q_answered'] = isset($data['onboard_q_answered']) ? $data['onboard_q_answered'] : null;
         $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
         $this->container['sending_volume_per_month'] = isset($data['sending_volume_per_month']) ? $data['sending_volume_per_month'] : null;
@@ -325,6 +337,30 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets logo_url
+     *
+     * @return string
+     */
+    public function getLogoUrl()
+    {
+        return $this->container['logo_url'];
+    }
+
+    /**
+     * Sets logo_url
+     *
+     * @param string $logo_url logo_url
+     *
+     * @return $this
+     */
+    public function setLogoUrl($logo_url)
+    {
+        $this->container['logo_url'] = $logo_url;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -344,6 +380,30 @@ class ModelsEAccountMember implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets onboard_c_finished
+     *
+     * @return bool
+     */
+    public function getOnboardCFinished()
+    {
+        return $this->container['onboard_c_finished'];
+    }
+
+    /**
+     * Sets onboard_c_finished
+     *
+     * @param bool $onboard_c_finished onboard_c_finished
+     *
+     * @return $this
+     */
+    public function setOnboardCFinished($onboard_c_finished)
+    {
+        $this->container['onboard_c_finished'] = $onboard_c_finished;
 
         return $this;
     }

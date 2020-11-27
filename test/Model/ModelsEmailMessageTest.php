@@ -140,6 +140,13 @@ class ModelsEmailMessageTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "template"
+     */
+    public function testPropertyTemplate()
+    {
+    }
+
+    /**
      * Test attribute "text_body"
      */
     public function testPropertyTextBody()

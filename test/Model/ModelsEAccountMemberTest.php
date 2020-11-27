@@ -98,9 +98,23 @@ class ModelsEAccountMemberTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "logo_url"
+     */
+    public function testPropertyLogoUrl()
+    {
+    }
+
+    /**
      * Test attribute "name"
      */
     public function testPropertyName()
+    {
+    }
+
+    /**
+     * Test attribute "onboard_c_finished"
+     */
+    public function testPropertyOnboardCFinished()
     {
     }
 

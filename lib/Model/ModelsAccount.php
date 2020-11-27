@@ -62,9 +62,13 @@ class ModelsAccount implements ModelInterface, ArrayAccess
         'current_email_service_provider' => 'string',
         'id' => 'int',
         'industry' => 'string',
+        'is_canceled' => 'bool',
+        'is_last_payment_failed' => 'bool',
+        'is_upgraded' => 'bool',
         'lock_threshold' => 'int',
         'locked' => 'bool',
         'name' => 'string',
+        'onboard_c_finished' => 'bool',
         'onboard_q_answered' => 'bool',
         'sending_volume_per_month' => 'string',
         'url' => 'string'
@@ -81,9 +85,13 @@ class ModelsAccount implements ModelInterface, ArrayAccess
         'current_email_service_provider' => null,
         'id' => 'int64',
         'industry' => null,
+        'is_canceled' => null,
+        'is_last_payment_failed' => null,
+        'is_upgraded' => null,
         'lock_threshold' => 'int64',
         'locked' => null,
         'name' => null,
+        'onboard_c_finished' => null,
         'onboard_q_answered' => null,
         'sending_volume_per_month' => null,
         'url' => null
@@ -121,9 +129,13 @@ class ModelsAccount implements ModelInterface, ArrayAccess
         'current_email_service_provider' => 'currentEmailServiceProvider',
         'id' => 'id',
         'industry' => 'industry',
-        'lock_threshold' => 'lock_threshold',
+        'is_canceled' => 'isCanceled',
+        'is_last_payment_failed' => 'isLastPaymentFailed',
+        'is_upgraded' => 'isUpgraded',
+        'lock_threshold' => 'lockThreshold',
         'locked' => 'locked',
         'name' => 'name',
+        'onboard_c_finished' => 'onboardCFinished',
         'onboard_q_answered' => 'onboardQAnswered',
         'sending_volume_per_month' => 'sendingVolumePerMonth',
         'url' => 'url'
@@ -140,9 +152,13 @@ class ModelsAccount implements ModelInterface, ArrayAccess
         'current_email_service_provider' => 'setCurrentEmailServiceProvider',
         'id' => 'setId',
         'industry' => 'setIndustry',
+        'is_canceled' => 'setIsCanceled',
+        'is_last_payment_failed' => 'setIsLastPaymentFailed',
+        'is_upgraded' => 'setIsUpgraded',
         'lock_threshold' => 'setLockThreshold',
         'locked' => 'setLocked',
         'name' => 'setName',
+        'onboard_c_finished' => 'setOnboardCFinished',
         'onboard_q_answered' => 'setOnboardQAnswered',
         'sending_volume_per_month' => 'setSendingVolumePerMonth',
         'url' => 'setUrl'
@@ -159,9 +175,13 @@ class ModelsAccount implements ModelInterface, ArrayAccess
         'current_email_service_provider' => 'getCurrentEmailServiceProvider',
         'id' => 'getId',
         'industry' => 'getIndustry',
+        'is_canceled' => 'getIsCanceled',
+        'is_last_payment_failed' => 'getIsLastPaymentFailed',
+        'is_upgraded' => 'getIsUpgraded',
         'lock_threshold' => 'getLockThreshold',
         'locked' => 'getLocked',
         'name' => 'getName',
+        'onboard_c_finished' => 'getOnboardCFinished',
         'onboard_q_answered' => 'getOnboardQAnswered',
         'sending_volume_per_month' => 'getSendingVolumePerMonth',
         'url' => 'getUrl'
@@ -232,9 +252,13 @@ class ModelsAccount implements ModelInterface, ArrayAccess
         $this->container['current_email_service_provider'] = isset($data['current_email_service_provider']) ? $data['current_email_service_provider'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['industry'] = isset($data['industry']) ? $data['industry'] : null;
+        $this->container['is_canceled'] = isset($data['is_canceled']) ? $data['is_canceled'] : null;
+        $this->container['is_last_payment_failed'] = isset($data['is_last_payment_failed']) ? $data['is_last_payment_failed'] : null;
+        $this->container['is_upgraded'] = isset($data['is_upgraded']) ? $data['is_upgraded'] : null;
         $this->container['lock_threshold'] = isset($data['lock_threshold']) ? $data['lock_threshold'] : null;
         $this->container['locked'] = isset($data['locked']) ? $data['locked'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['onboard_c_finished'] = isset($data['onboard_c_finished']) ? $data['onboard_c_finished'] : null;
         $this->container['onboard_q_answered'] = isset($data['onboard_q_answered']) ? $data['onboard_q_answered'] : null;
         $this->container['sending_volume_per_month'] = isset($data['sending_volume_per_month']) ? $data['sending_volume_per_month'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
@@ -385,6 +409,78 @@ class ModelsAccount implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets is_canceled
+     *
+     * @return bool
+     */
+    public function getIsCanceled()
+    {
+        return $this->container['is_canceled'];
+    }
+
+    /**
+     * Sets is_canceled
+     *
+     * @param bool $is_canceled is_canceled
+     *
+     * @return $this
+     */
+    public function setIsCanceled($is_canceled)
+    {
+        $this->container['is_canceled'] = $is_canceled;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_last_payment_failed
+     *
+     * @return bool
+     */
+    public function getIsLastPaymentFailed()
+    {
+        return $this->container['is_last_payment_failed'];
+    }
+
+    /**
+     * Sets is_last_payment_failed
+     *
+     * @param bool $is_last_payment_failed is_last_payment_failed
+     *
+     * @return $this
+     */
+    public function setIsLastPaymentFailed($is_last_payment_failed)
+    {
+        $this->container['is_last_payment_failed'] = $is_last_payment_failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_upgraded
+     *
+     * @return bool
+     */
+    public function getIsUpgraded()
+    {
+        return $this->container['is_upgraded'];
+    }
+
+    /**
+     * Sets is_upgraded
+     *
+     * @param bool $is_upgraded is_upgraded
+     *
+     * @return $this
+     */
+    public function setIsUpgraded($is_upgraded)
+    {
+        $this->container['is_upgraded'] = $is_upgraded;
+
+        return $this;
+    }
+
+    /**
      * Gets lock_threshold
      *
      * @return int
@@ -452,6 +548,30 @@ class ModelsAccount implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets onboard_c_finished
+     *
+     * @return bool
+     */
+    public function getOnboardCFinished()
+    {
+        return $this->container['onboard_c_finished'];
+    }
+
+    /**
+     * Sets onboard_c_finished
+     *
+     * @param bool $onboard_c_finished onboard_c_finished
+     *
+     * @return $this
+     */
+    public function setOnboardCFinished($onboard_c_finished)
+    {
+        $this->container['onboard_c_finished'] = $onboard_c_finished;
 
         return $this;
     }

@@ -66,7 +66,8 @@ class ModelsDomain implements ModelInterface, ArrayAccess
         'return_path' => '\Swagger\Client\Model\ModelsDNSRecord',
         'return_path_verified' => 'bool',
         'track' => '\Swagger\Client\Model\ModelsDNSRecord',
-        'track_verified' => 'bool'
+        'track_verified' => 'bool',
+        'verified' => 'bool'
     ];
 
     /**
@@ -84,7 +85,8 @@ class ModelsDomain implements ModelInterface, ArrayAccess
         'return_path' => null,
         'return_path_verified' => null,
         'track' => null,
-        'track_verified' => null
+        'track_verified' => null,
+        'verified' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class ModelsDomain implements ModelInterface, ArrayAccess
         'return_path' => 'returnPath',
         'return_path_verified' => 'returnPathVerified',
         'track' => 'track',
-        'track_verified' => 'trackVerified'
+        'track_verified' => 'trackVerified',
+        'verified' => 'verified'
     ];
 
     /**
@@ -141,7 +144,8 @@ class ModelsDomain implements ModelInterface, ArrayAccess
         'return_path' => 'setReturnPath',
         'return_path_verified' => 'setReturnPathVerified',
         'track' => 'setTrack',
-        'track_verified' => 'setTrackVerified'
+        'track_verified' => 'setTrackVerified',
+        'verified' => 'setVerified'
     ];
 
     /**
@@ -159,7 +163,8 @@ class ModelsDomain implements ModelInterface, ArrayAccess
         'return_path' => 'getReturnPath',
         'return_path_verified' => 'getReturnPathVerified',
         'track' => 'getTrack',
-        'track_verified' => 'getTrackVerified'
+        'track_verified' => 'getTrackVerified',
+        'verified' => 'getVerified'
     ];
 
     /**
@@ -232,6 +237,7 @@ class ModelsDomain implements ModelInterface, ArrayAccess
         $this->container['return_path_verified'] = isset($data['return_path_verified']) ? $data['return_path_verified'] : null;
         $this->container['track'] = isset($data['track']) ? $data['track'] : null;
         $this->container['track_verified'] = isset($data['track_verified']) ? $data['track_verified'] : null;
+        $this->container['verified'] = isset($data['verified']) ? $data['verified'] : null;
     }
 
     /**
@@ -494,6 +500,30 @@ class ModelsDomain implements ModelInterface, ArrayAccess
     public function setTrackVerified($track_verified)
     {
         $this->container['track_verified'] = $track_verified;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified
+     *
+     * @return bool
+     */
+    public function getVerified()
+    {
+        return $this->container['verified'];
+    }
+
+    /**
+     * Sets verified
+     *
+     * @param bool $verified verified
+     *
+     * @return $this
+     */
+    public function setVerified($verified)
+    {
+        $this->container['verified'] = $verified;
 
         return $this;
     }

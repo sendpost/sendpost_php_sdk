@@ -11,6 +11,8 @@ Method | HTTP request | Description
 [**domainRouterGetAll**](SubaccountdomainApi.md#domainRouterGetAll) | **GET** /subaccount/domain/ | 
 [**domainRouterUpdate**](SubaccountdomainApi.md#domainRouterUpdate) | **PUT** /subaccount/domain/{domainId} | 
 [**domainRouterVerify**](SubaccountdomainApi.md#domainRouterVerify) | **POST** /subaccount/domain/{domainId}/verify | 
+[**domainRouterVerifyByToken**](SubaccountdomainApi.md#domainRouterVerifyByToken) | **POST** /subaccount/domain/{domainId}/verify/email/{token} | 
+[**domainRouterVerifyRequest**](SubaccountdomainApi.md#domainRouterVerifyRequest) | **POST** /subaccount/domain/{domainId}/verify/email | 
 
 
 # **domainRouterCount**
@@ -362,6 +364,111 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\ModelsDomain**](../Model/ModelsDomain.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **domainRouterVerifyByToken**
+> \Swagger\Client\Model\ModelsDomain domainRouterVerifyByToken($x_sub_account_api_key, $domain_id, $token)
+
+
+
+Verify Domain By Signed Token
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\SubaccountdomainApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$x_sub_account_api_key = "x_sub_account_api_key_example"; // string | Sub-Account API Key
+$domain_id = 789; // int | the DomainId you want to get
+$token = "token_example"; // string | The signed token used to verify
+
+try {
+    $result = $apiInstance->domainRouterVerifyByToken($x_sub_account_api_key, $domain_id, $token);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SubaccountdomainApi->domainRouterVerifyByToken: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_sub_account_api_key** | **string**| Sub-Account API Key |
+ **domain_id** | **int**| the DomainId you want to get |
+ **token** | **string**| The signed token used to verify |
+
+### Return type
+
+[**\Swagger\Client\Model\ModelsDomain**](../Model/ModelsDomain.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **domainRouterVerifyRequest**
+> domainRouterVerifyRequest($x_sub_account_api_key, $domain_id, $body)
+
+
+
+Verify Domain By Email Request
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\SubaccountdomainApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$x_sub_account_api_key = "x_sub_account_api_key_example"; // string | Sub-Account API Key
+$domain_id = 789; // int | the DomainId you want to get
+$body = new \Swagger\Client\Model\ModelsVerifyByTokenRequest(); // \Swagger\Client\Model\ModelsVerifyByTokenRequest | The Email to be used to verify
+
+try {
+    $apiInstance->domainRouterVerifyRequest($x_sub_account_api_key, $domain_id, $body);
+} catch (Exception $e) {
+    echo 'Exception when calling SubaccountdomainApi->domainRouterVerifyRequest: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **x_sub_account_api_key** | **string**| Sub-Account API Key |
+ **domain_id** | **int**| the DomainId you want to get |
+ **body** | [**\Swagger\Client\Model\ModelsVerifyByTokenRequest**](../Model/ModelsVerifyByTokenRequest.md)| The Email to be used to verify |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

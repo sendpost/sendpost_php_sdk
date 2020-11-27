@@ -2046,6 +2046,562 @@ class SubaccountdomainApi
     }
 
     /**
+     * Operation domainRouterVerifyByToken
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  string $token The signed token used to verify (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\ModelsDomain
+     */
+    public function domainRouterVerifyByToken($x_sub_account_api_key, $domain_id, $token)
+    {
+        list($response) = $this->domainRouterVerifyByTokenWithHttpInfo($x_sub_account_api_key, $domain_id, $token);
+        return $response;
+    }
+
+    /**
+     * Operation domainRouterVerifyByTokenWithHttpInfo
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  string $token The signed token used to verify (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\ModelsDomain, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function domainRouterVerifyByTokenWithHttpInfo($x_sub_account_api_key, $domain_id, $token)
+    {
+        $returnType = '\Swagger\Client\Model\ModelsDomain';
+        $request = $this->domainRouterVerifyByTokenRequest($x_sub_account_api_key, $domain_id, $token);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ModelsDomain',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation domainRouterVerifyByTokenAsync
+     *
+     * 
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  string $token The signed token used to verify (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function domainRouterVerifyByTokenAsync($x_sub_account_api_key, $domain_id, $token)
+    {
+        return $this->domainRouterVerifyByTokenAsyncWithHttpInfo($x_sub_account_api_key, $domain_id, $token)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation domainRouterVerifyByTokenAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  string $token The signed token used to verify (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function domainRouterVerifyByTokenAsyncWithHttpInfo($x_sub_account_api_key, $domain_id, $token)
+    {
+        $returnType = '\Swagger\Client\Model\ModelsDomain';
+        $request = $this->domainRouterVerifyByTokenRequest($x_sub_account_api_key, $domain_id, $token);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'domainRouterVerifyByToken'
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  string $token The signed token used to verify (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function domainRouterVerifyByTokenRequest($x_sub_account_api_key, $domain_id, $token)
+    {
+        // verify the required parameter 'x_sub_account_api_key' is set
+        if ($x_sub_account_api_key === null || (is_array($x_sub_account_api_key) && count($x_sub_account_api_key) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_sub_account_api_key when calling domainRouterVerifyByToken'
+            );
+        }
+        // verify the required parameter 'domain_id' is set
+        if ($domain_id === null || (is_array($domain_id) && count($domain_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $domain_id when calling domainRouterVerifyByToken'
+            );
+        }
+        // verify the required parameter 'token' is set
+        if ($token === null || (is_array($token) && count($token) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $token when calling domainRouterVerifyByToken'
+            );
+        }
+
+        $resourcePath = '/subaccount/domain/{domainId}/verify/email/{token}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_sub_account_api_key !== null) {
+            $headerParams['X-SubAccount-ApiKey'] = ObjectSerializer::toHeaderValue($x_sub_account_api_key);
+        }
+
+        // path params
+        if ($domain_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'domainId' . '}',
+                ObjectSerializer::toPathValue($domain_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($token !== null) {
+            $resourcePath = str_replace(
+                '{' . 'token' . '}',
+                ObjectSerializer::toPathValue($token),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation domainRouterVerifyRequest
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  \Swagger\Client\Model\ModelsVerifyByTokenRequest $body The Email to be used to verify (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function domainRouterVerifyRequest($x_sub_account_api_key, $domain_id, $body)
+    {
+        $this->domainRouterVerifyRequestWithHttpInfo($x_sub_account_api_key, $domain_id, $body);
+    }
+
+    /**
+     * Operation domainRouterVerifyRequestWithHttpInfo
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  \Swagger\Client\Model\ModelsVerifyByTokenRequest $body The Email to be used to verify (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function domainRouterVerifyRequestWithHttpInfo($x_sub_account_api_key, $domain_id, $body)
+    {
+        $returnType = '';
+        $request = $this->domainRouterVerifyRequestRequest($x_sub_account_api_key, $domain_id, $body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation domainRouterVerifyRequestAsync
+     *
+     * 
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  \Swagger\Client\Model\ModelsVerifyByTokenRequest $body The Email to be used to verify (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function domainRouterVerifyRequestAsync($x_sub_account_api_key, $domain_id, $body)
+    {
+        return $this->domainRouterVerifyRequestAsyncWithHttpInfo($x_sub_account_api_key, $domain_id, $body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation domainRouterVerifyRequestAsyncWithHttpInfo
+     *
+     * 
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  \Swagger\Client\Model\ModelsVerifyByTokenRequest $body The Email to be used to verify (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function domainRouterVerifyRequestAsyncWithHttpInfo($x_sub_account_api_key, $domain_id, $body)
+    {
+        $returnType = '';
+        $request = $this->domainRouterVerifyRequestRequest($x_sub_account_api_key, $domain_id, $body);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'domainRouterVerifyRequest'
+     *
+     * @param  string $x_sub_account_api_key Sub-Account API Key (required)
+     * @param  int $domain_id the DomainId you want to get (required)
+     * @param  \Swagger\Client\Model\ModelsVerifyByTokenRequest $body The Email to be used to verify (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function domainRouterVerifyRequestRequest($x_sub_account_api_key, $domain_id, $body)
+    {
+        // verify the required parameter 'x_sub_account_api_key' is set
+        if ($x_sub_account_api_key === null || (is_array($x_sub_account_api_key) && count($x_sub_account_api_key) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $x_sub_account_api_key when calling domainRouterVerifyRequest'
+            );
+        }
+        // verify the required parameter 'domain_id' is set
+        if ($domain_id === null || (is_array($domain_id) && count($domain_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $domain_id when calling domainRouterVerifyRequest'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling domainRouterVerifyRequest'
+            );
+        }
+
+        $resourcePath = '/subaccount/domain/{domainId}/verify/email';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // header params
+        if ($x_sub_account_api_key !== null) {
+            $headerParams['X-SubAccount-ApiKey'] = ObjectSerializer::toHeaderValue($x_sub_account_api_key);
+        }
+
+        // path params
+        if ($domain_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'domainId' . '}',
+                ObjectSerializer::toPathValue($domain_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            
+            if($headers['Content-Type'] === 'application/json') {
+                // \stdClass has no __toString(), so we should encode it manually
+                if ($httpBody instanceof \stdClass) {
+                    $httpBody = \GuzzleHttp\json_encode($httpBody);
+                }
+                // array has no __toString(), so we should encode it manually
+                if(is_array($httpBody)) {
+                    $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($httpBody));
+                }
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Create http client option
      *
      * @throws \RuntimeException on file opening failure

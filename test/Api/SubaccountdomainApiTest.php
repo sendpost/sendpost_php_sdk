@@ -140,4 +140,24 @@ class SubaccountdomainApiTest extends \PHPUnit_Framework_TestCase
     public function testDomainRouterVerify()
     {
     }
+
+    /**
+     * Test case for domainRouterVerifyByToken
+     *
+     * .
+     *
+     */
+    public function testDomainRouterVerifyByToken()
+    {
+    }
+
+    /**
+     * Test case for domainRouterVerifyRequest
+     *
+     * .
+     *
+     */
+    public function testDomainRouterVerifyRequest()
+    {
+    }
 }

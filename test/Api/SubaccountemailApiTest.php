@@ -80,4 +80,14 @@ class SubaccountemailApiTest extends \PHPUnit_Framework_TestCase
     public function testEmailRouterSendEmail()
     {
     }
+
+    /**
+     * Test case for emailRouterSendEmailWithTemplate
+     *
+     * .
+     *
+     */
+    public function testEmailRouterSendEmailWithTemplate()
+    {
+    }
 }
