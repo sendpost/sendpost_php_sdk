@@ -1,0 +1,10 @@
+{
+  "apiPackage": "api",
+  "artifactVersion": "1.0.0",
+  "invokerPackage": "sendpost",
+  "modelPackage": "model",
+  "packageName": "sendpost",
+  "prependFormOrBodyParameters": true,
+  "srcBasePath": "src",
+  "variableNamingConvention": "snake_case"
+}
