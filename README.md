@@ -67,6 +67,47 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```
 
+Example with cc, bcc and template:
+
+```php
+    <?php
+      require_once(__DIR__ . '/vendor/autoload.php');
+      $client = new GuzzleHttp\Client();
+
+      $apiInstance = new sendpost\api\EmailApi($client);
+  
+      $x_sub_account_api_key = 'your_api_key'; // string | Sub-Account API Key
+      $email_message = new \sendpost\model\EmailMessage(); 
+      $email_message->setSubject('Hello World');
+      $email_message->setHtmlBody('<strong>it works!</strong>');
+      $email_message->setIppool('PiedPiper');
+      $from = new \sendpost\model\From();
+      $from->setEmail('richard@piedpiper.com');
+
+      $cc = new \sendpost\model\CopyTo();
+      $cc->setEmail('dinesh@bachmanity.com');
+      $to->setCc(array($cc));
+      $bcc = new \sendpost\model\CopyTo();
+      $bcc->setEmail('jian@bachmanity.com');
+      $to->setBcc(array($bcc));
+
+      $email_message->setTemplate('Welcome Mail');
+
+      $to = new \sendpost\model\To();
+      $to->setEmail('gavin@hooli.com');
+      $email_message->setTo(array($to));
+      $email_message->setFrom($from);
+
+      try {
+          $result = $apiInstance->sendEmailWithTemplate($x_sub_account_api_key, $email_message);
+          print_r($result);
+      } catch (Exception $e) {
+          echo 'Exception when calling EmailApi->sendEmail: ', $e->getMessage(), PHP_EOL;
+      }
+    ?> 
+
+```
+
 ## API Endpoints
 
 All URIs are relative to *https://api.sendpost.io/api/v1*
