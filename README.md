@@ -38,74 +38,171 @@ require_once('/path/to/sendpost/vendor/autoload.php');
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```php
-    <?php
-      require_once(__DIR__ . '/vendor/autoload.php');
-      $client = new GuzzleHttp\Client();
+  require_once(__DIR__ . '/vendor/autoload.php');
+  $client = new GuzzleHttp\Client();
 
-      $apiInstance = new sendpost\api\EmailApi($client);
-  
-      $x_sub_account_api_key = 'your_api_key'; // string | Sub-Account API Key
-      $email_message = new \sendpost\model\EmailMessage(); 
-      $email_message->setSubject('Hello World');
-      $email_message->setHtmlBody('<strong>it works!</strong>');
-      $email_message->setIppool('PiedPiper');
-      $from = new \sendpost\model\From();
-      $from->setEmail('richard@piedpiper.com');
+  $apiInstance = new sendpost\api\EmailApi($client);
 
-      $to = new \sendpost\model\To();
-      $to->setEmail('gavin@hooli.com');
-      $email_message->setTo(array($to));
-      $email_message->setFrom($from);
+  $x_sub_account_api_key = 'your_api_key'; // string | Sub-Account API Key
+  $email_message = new \sendpost\model\EmailMessage(); 
+  $email_message->setSubject('Hello World');
+  $email_message->setHtmlBody('<strong>it works!</strong>');
+  $email_message->setIppool('PiedPiper');
+  $from = new \sendpost\model\From();
+  $from->setEmail('richard@piedpiper.com');
 
-      try {
-          $result = $apiInstance->sendEmail($x_sub_account_api_key, $email_message);
-          print_r($result);
-      } catch (Exception $e) {
-          echo 'Exception when calling EmailApi->sendEmail: ', $e->getMessage(), PHP_EOL;
-      }
-    ?> 
+  $to = new \sendpost\model\To();
+  $to->setEmail('gavin@hooli.com');
+  $email_message->setTo(array($to));
+  $email_message->setFrom($from);
+
+  try {
+      $result = $apiInstance->sendEmail($x_sub_account_api_key, $email_message);
+      print_r($result);
+  } catch (Exception $e) {
+      echo 'Exception when calling EmailApi->sendEmail: ', $e->getMessage(), PHP_EOL;
+  }
 
 ```
 
 Example with cc, bcc and template:
 
 ```php
-    <?php
-      require_once(__DIR__ . '/vendor/autoload.php');
-      $client = new GuzzleHttp\Client();
+  require_once(__DIR__ . '/vendor/autoload.php');
+  $client = new GuzzleHttp\Client();
 
-      $apiInstance = new sendpost\api\EmailApi($client);
-  
-      $x_sub_account_api_key = 'your_api_key'; // string | Sub-Account API Key
-      $email_message = new \sendpost\model\EmailMessage(); 
-      $email_message->setSubject('Hello World');
-      $email_message->setHtmlBody('<strong>it works!</strong>');
-      $email_message->setIppool('PiedPiper');
-      $from = new \sendpost\model\From();
-      $from->setEmail('richard@piedpiper.com');
+  $apiInstance = new sendpost\api\EmailApi($client);
 
-      $cc = new \sendpost\model\CopyTo();
-      $cc->setEmail('dinesh@bachmanity.com');
-      $to->setCc(array($cc));
-      $bcc = new \sendpost\model\CopyTo();
-      $bcc->setEmail('jian@bachmanity.com');
-      $to->setBcc(array($bcc));
+  $x_sub_account_api_key = 'your_api_key'; // string | Sub-Account API Key
+  $email_message = new \sendpost\model\EmailMessage(); 
+  $email_message->setSubject('Hello World');
+  $email_message->setHtmlBody('<strong>it works!</strong>');
+  $email_message->setIppool('PiedPiper');
+  $from = new \sendpost\model\From();
+  $from->setEmail('richard@piedpiper.com');
 
-      $email_message->setTemplate('Welcome Mail');
+  $cc = new \sendpost\model\CopyTo();
+  $cc->setEmail('dinesh@bachmanity.com');
+  $to->setCc(array($cc));
+  $bcc = new \sendpost\model\CopyTo();
+  $bcc->setEmail('jian@bachmanity.com');
+  $to->setBcc(array($bcc));
 
-      $to = new \sendpost\model\To();
-      $to->setEmail('gavin@hooli.com');
-      $email_message->setTo(array($to));
-      $email_message->setFrom($from);
+  $email_message->setTemplate('Welcome Mail');
 
-      try {
-          $result = $apiInstance->sendEmailWithTemplate($x_sub_account_api_key, $email_message);
-          print_r($result);
-      } catch (Exception $e) {
-          echo 'Exception when calling EmailApi->sendEmail: ', $e->getMessage(), PHP_EOL;
-      }
-    ?> 
+  $to = new \sendpost\model\To();
+  $to->setEmail('gavin@hooli.com');
+  $email_message->setTo(array($to));
+  $email_message->setFrom($from);
 
+  try {
+      $result = $apiInstance->sendEmailWithTemplate($x_sub_account_api_key, $email_message);
+      print_r($result);
+  } catch (Exception $e) {
+      echo 'Exception when calling EmailApi->sendEmailWithTemplate: ', $e->getMessage(), PHP_EOL;
+  }
+
+```
+
+## Suppressions
+
+Create Suppressions
+
+```php
+  require_once(__DIR__ . '/vendor/autoload.php');
+  $client = new GuzzleHttp\Client();
+
+  $apiInstance = new sendpost\api\SuppressionApi($client);
+
+  $x_sub_account_api_key = 'your_api_key'; 
+
+  $r_suppression = new \sendpost\model\RSuppression();
+  $suppression_email = new \sendpost\model\SuppressionEmail();
+  $suppression_email->setEmail('richard@piedpiper_fake.com');
+
+  $r_suppression->setHardBounce(array($suppression_email));
+
+  // fields are optional, but you have to send at least one of them.
+
+  // $r_suppression->setManual(array($suppression_email));
+  // $r_suppression->setSpamComplaint(array($suppression_email));
+  // $r_suppression->setUnsubscribe(array($suppression_email));
+
+  try {
+      $result = $apiInstance->createSuppressions($x_sub_account_api_key, $r_suppression);
+      echo json_encode($result);
+  } catch (Exception $e) {
+      echo 'Exception when calling SuppressionApi->createSuppressions: ', $e->getMessage(), PHP_EOL;
+  }
+```
+
+Get Suppressions
+
+```php
+  require_once(__DIR__ . '/vendor/autoload.php');
+  $client = new GuzzleHttp\Client();
+
+  $apiInstance = new sendpost\api\SuppressionApi($client);
+
+  $x_sub_account_api_key = 'your_api_key'; 
+
+  $offset = 0;
+  $limit = 10;
+  $search = null;
+  $from = '2023-06-07';
+  $to = '2023-08-02';
+
+  try {
+      $result = $apiInstance->getSuppressions($x_sub_account_api_key, $offset, $limit, $search, $from, $to);
+      echo json_encode($result);
+  } catch (Exception $e) {
+      echo 'Exception when calling SuppressionApi->getSuppressions: ', $e->getMessage(), PHP_EOL;
+  }
+```
+
+Delete Suppression
+
+```php
+  require_once(__DIR__ . '/vendor/autoload.php');
+  $client = new GuzzleHttp\Client();
+
+  $apiInstance = new sendpost\api\SuppressionApi($client);
+
+  $x_sub_account_api_key = 'your_api_key'; 
+
+  $rd_suppression = new \sendpost\model\RDSuppression();
+  $suppression_email = new \sendpost\model\SuppressionEmail();
+  $suppression_email->setEmail('richard@piedpiper_fake.com');
+
+  $rd_suppression->setSuppressions(array($suppression_email));
+
+  try {
+      $result = $apiInstance->deleteSuppression($x_sub_account_api_key, $rd_suppression);
+      echo json_encode($result);
+  } catch (Exception $e) {
+      echo 'Exception when calling SuppressionApi->deleteSuppression: ', $e->getMessage(), PHP_EOL;
+  }
+```
+
+Count Suppression
+
+```php
+  require_once(__DIR__ . '/vendor/autoload.php');
+  $client = new GuzzleHttp\Client();
+
+  $apiInstance = new sendpost\api\SuppressionApi($client);
+
+  $x_sub_account_api_key = 'your_api_key'; 
+
+  $from = '2023-06-07';
+  $to = '2023-08-02';
+
+  try {
+      $result = $apiInstance->count($x_sub_account_api_key, $from, $to);
+      echo json_encode($result);
+  } catch (Exception $e) {
+      echo 'Exception when calling SuppressionApi->count: ', $e->getMessage(), PHP_EOL;
+  }
 ```
 
 ## API Endpoints
