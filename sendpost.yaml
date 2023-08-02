@@ -156,7 +156,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Suppression'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Suppression'
         '401':
           description: Not Authorized
         '406':

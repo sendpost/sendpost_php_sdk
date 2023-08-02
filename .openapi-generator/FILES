@@ -54,9 +54,3 @@ src/model/SuppressionEmail.php
 src/model/To.php
 src/model/UserAgent.php
 src/model/WebhookEvent.php
-test/Api/SuppressionApiTest.php
-test/Model/CountStatTest.php
-test/Model/RDSuppressionTest.php
-test/Model/RSuppressionTest.php
-test/Model/SuppressionEmailTest.php
-test/Model/SuppressionTest.php

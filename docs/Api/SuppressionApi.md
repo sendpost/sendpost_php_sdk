@@ -73,7 +73,7 @@ No authorization required
 ## `createSuppressions()`
 
 ```php
-createSuppressions($x_sub_account_api_key, $r_suppression): \sendpost\model\Suppression
+createSuppressions($x_sub_account_api_key, $r_suppression): \sendpost\model\Suppression[]
 ```
 
 
@@ -113,7 +113,7 @@ try {
 
 ### Return type
 
-[**\sendpost\model\Suppression**](../Model/Suppression.md)
+[**\sendpost\model\Suppression[]**](../Model/Suppression.md)
 
 ### Authorization
 

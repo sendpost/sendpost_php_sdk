@@ -442,7 +442,7 @@ class SuppressionApi
      *
      * @throws \sendpost\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \sendpost\model\Suppression
+     * @return \sendpost\model\Suppression[]
      */
     public function createSuppressions($x_sub_account_api_key, $r_suppression = null, string $contentType = self::contentTypes['createSuppressions'][0])
     {
@@ -459,7 +459,7 @@ class SuppressionApi
      *
      * @throws \sendpost\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \sendpost\model\Suppression, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \sendpost\model\Suppression[], HTTP status code, HTTP response headers (array of strings)
      */
     public function createSuppressionsWithHttpInfo($x_sub_account_api_key, $r_suppression = null, string $contentType = self::contentTypes['createSuppressions'][0])
     {
@@ -502,23 +502,23 @@ class SuppressionApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\sendpost\model\Suppression' === '\SplFileObject') {
+                    if ('\sendpost\model\Suppression[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\sendpost\model\Suppression' !== 'string') {
+                        if ('\sendpost\model\Suppression[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\sendpost\model\Suppression', []),
+                        ObjectSerializer::deserialize($content, '\sendpost\model\Suppression[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\sendpost\model\Suppression';
+            $returnType = '\sendpost\model\Suppression[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -539,7 +539,7 @@ class SuppressionApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\sendpost\model\Suppression',
+                        '\sendpost\model\Suppression[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -581,7 +581,7 @@ class SuppressionApi
      */
     public function createSuppressionsAsyncWithHttpInfo($x_sub_account_api_key, $r_suppression = null, string $contentType = self::contentTypes['createSuppressions'][0])
     {
-        $returnType = '\sendpost\model\Suppression';
+        $returnType = '\sendpost\model\Suppression[]';
         $request = $this->createSuppressionsRequest($x_sub_account_api_key, $r_suppression, $contentType);
 
         return $this->client
