@@ -224,6 +224,7 @@ Class | Method | HTTP request | Description
 - [City](docs/Model/City.md)
 - [CopyTo](docs/Model/CopyTo.md)
 - [CountStat](docs/Model/CountStat.md)
+- [DeleteResponse](docs/Model/DeleteResponse.md)
 - [Device](docs/Model/Device.md)
 - [EmailMessage](docs/Model/EmailMessage.md)
 - [EmailResponse](docs/Model/EmailResponse.md)

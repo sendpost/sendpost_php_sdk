@@ -191,7 +191,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Suppression'
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeleteResponse'
         '401':
           description: Not Authorized
         '406':
@@ -627,6 +629,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SuppressionEmail'
+    DeleteResponse:
+      title: DeleteResponse
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        message:
+          type: string
     CountStat:
       title: CountStat
       type: object

@@ -131,7 +131,7 @@ No authorization required
 ## `deleteSuppression()`
 
 ```php
-deleteSuppression($x_sub_account_api_key, $rd_suppression): \sendpost\model\Suppression
+deleteSuppression($x_sub_account_api_key, $rd_suppression): \sendpost\model\DeleteResponse[]
 ```
 
 
@@ -171,7 +171,7 @@ try {
 
 ### Return type
 
-[**\sendpost\model\Suppression**](../Model/Suppression.md)
+[**\sendpost\model\DeleteResponse[]**](../Model/DeleteResponse.md)
 
 ### Authorization
 

@@ -9,6 +9,7 @@ docs/Model/Attachment.md
 docs/Model/City.md
 docs/Model/CopyTo.md
 docs/Model/CountStat.md
+docs/Model/DeleteResponse.md
 docs/Model/Device.md
 docs/Model/EmailMessage.md
 docs/Model/EmailResponse.md
@@ -37,6 +38,7 @@ src/model/Attachment.php
 src/model/City.php
 src/model/CopyTo.php
 src/model/CountStat.php
+src/model/DeleteResponse.php
 src/model/Device.php
 src/model/EmailMessage.php
 src/model/EmailResponse.php
@@ -54,3 +56,4 @@ src/model/SuppressionEmail.php
 src/model/To.php
 src/model/UserAgent.php
 src/model/WebhookEvent.php
+test/Model/DeleteResponseTest.php
