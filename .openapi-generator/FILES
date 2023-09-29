@@ -56,4 +56,3 @@ src/model/SuppressionEmail.php
 src/model/To.php
 src/model/UserAgent.php
 src/model/WebhookEvent.php
-test/Model/DeleteResponseTest.php

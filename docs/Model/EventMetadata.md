@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **clicked_url** | **string** |  | [optional]
+**tracked_ip** | **string** |  | [optional]
+**raw_user_agent** | **string** |  | [optional]
 **device** | [**\sendpost\model\Device**](Device.md) |  | [optional]
 **geo** | [**\sendpost\model\City**](City.md) |  | [optional]
 **os** | [**\sendpost\model\Os**](Os.md) |  | [optional]
